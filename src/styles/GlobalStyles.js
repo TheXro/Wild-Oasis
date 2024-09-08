@@ -91,6 +91,7 @@ select {
 
 button {
   cursor: pointer;
+  
 }
 
 *:disabled {
@@ -107,9 +108,13 @@ input:focus,
 button:focus,
 textarea:focus,
 select:focus {
+  border-radius: 3px;
+  /* transition: none !important; */
   outline: 2px solid var(--color-brand-600);
+
   outline-offset: -1px;
 }
+
 
 /* Parent selector, finally 😃 */
 button:has(svg) {
