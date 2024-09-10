@@ -1,14 +1,14 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 import Input from "../../ui/Input";
 import Form from "../../ui/Form";
 import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
-import { useForm } from "react-hook-form";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import toast from "react-hot-toast";
 import { createCabin } from "../../services/apiCabins";
 import FormRow from "../../ui/FormRow";
-function CreateCabinForm() {
+function CreateCabinForm({cabinToEdit}) {
   const queryClient = useQueryClient();
 
   const { register, handleSubmit, reset, getValues, formState } = useForm();
@@ -23,7 +23,9 @@ function CreateCabinForm() {
   });
 
   function onSubmit(data) {
-    mutate({...data, image: data.image.at(0)});
+    mutate({...data, image: data.image[0]});
+    console.log(data);
+    
   }
   function onError(errors) {
     toast.error("An error occurred ");
@@ -109,7 +111,7 @@ function CreateCabinForm() {
           id="image"
           accept="image/*"
           type="file"
-          {...register("description", {
+          {...register("image", {
             required: "This field is required",
           })}
         />
