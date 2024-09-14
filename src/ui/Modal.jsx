@@ -1,3 +1,5 @@
+import { createPortal } from "react-dom";
+import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 
 const StyledModal = styled.div`
@@ -48,3 +50,29 @@ const Button = styled.button`
     color: var(--color-grey-500);
   }
 `;
+
+function Modal({ children, onClose }) {
+  const clicked = (e) => {
+    //check if the target is the overlay
+    if (e.target === e.currentTarget) {
+      //close the modal if the overlay is clicked and the onClose function is passed
+      onClose?.();
+    }
+  };
+  // create a portal to the body in order to avoid overflow hidded issues
+  return createPortal(
+    <> 
+      <Overlay onClick={clicked}>
+      <StyledModal>
+        <Button onClick={onClose}>
+          <HiXMark />
+        </Button>
+        {children}
+      </StyledModal>
+      </Overlay>
+    </>,
+    document.body
+  );
+}
+
+export default Modal;
