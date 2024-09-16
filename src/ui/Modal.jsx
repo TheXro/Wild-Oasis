@@ -1,6 +1,13 @@
+import {
+  cloneElement,
+  createContext,
+  useContext,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
+import { useOutsideClick } from "../hooks/useOutsideClick";
 
 const StyledModal = styled.div`
   position: fixed;
@@ -51,28 +58,47 @@ const Button = styled.button`
   }
 `;
 
+const ModalContext = createContext();
+
 function Modal({ children, onClose }) {
-  const clicked = (e) => {
-    //check if the target is the overlay
-    if (e.target === e.currentTarget) {
-      //close the modal if the overlay is clicked and the onClose function is passed
-      onClose?.();
-    }
-  };
+  const [openName, setOpenName] = useState("");
+  const close = () => setOpenName("");
+  const open = setOpenName;
+  return (
+    <ModalContext.Provider value={{ openName, close, open }}>
+      {children}
+    </ModalContext.Provider>
+  );
+}
+
+function Open({ children, opens: opensWindowName }) {
+  const { open } = useContext(ModalContext);
+  return cloneElement(children, {
+    onClick: () => open(opensWindowName),
+  });
+}
+
+function Window({ children, name }) {
+  const { openName, close } = useContext(ModalContext);
+  const ref = useOutsideClick(close);
+  if (name !== openName) return null;
+
   // create a portal to the body in order to avoid overflow hidded issues
   return createPortal(
-    <> 
-      <Overlay onClick={clicked}>
-      <StyledModal>
-        <Button onClick={onClose}>
-          <HiXMark />
-        </Button>
-        {children}
-      </StyledModal>
+    <>
+      <Overlay>
+        <StyledModal ref={ref}>
+          <Button onClick={close}>
+            <HiXMark />
+          </Button>
+          {cloneElement(children, { onCloseModal: close })}
+        </StyledModal>
       </Overlay>
     </>,
     document.body
   );
 }
+Modal.Open = Open;
+Modal.Window = Window;
 
 export default Modal;
