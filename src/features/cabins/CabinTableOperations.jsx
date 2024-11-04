@@ -18,6 +18,8 @@ function CabinTableOperations() {
           { value: 'regularPrice-desc', label: 'Sort by price (high first)' },
           { value: 'maxCapacity-asc', label: 'Sort by capacity (low first)' },
           { value: 'maxCapacity-desc', label: 'Sort by capacity (high first)' },
+          { value: 'discount-asc', label: 'Sort by discount (low first)' },
+          { value: 'discount-desc', label: 'Sort by discount (high first)' },
         ]}
       />
       

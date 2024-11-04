@@ -28,10 +28,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Dashboard />} />
-            {/* // or
-        <Route index element={<Navigate replace to="dashboard"/>} />
-      */}
+            <Route index element={<Dashboard />} /> {/* // or <Route index element={<Navigate replace to="dashboard"/>} />*/}
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="account" element={<Account />} />
             <Route path="booking" element={<Bookings />} />
