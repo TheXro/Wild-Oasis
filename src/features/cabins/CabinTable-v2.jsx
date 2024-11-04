@@ -22,7 +22,7 @@ const TableHeader = styled.header`
 `;
 
 function CabinTable() {
-  const { isLoading, cabins, error } = useCabins();
+  const { isLoading, cabins, error } = useCabins();;
 
   if (isLoading) {
     return <Spinner />;
@@ -43,9 +43,6 @@ function CabinTable() {
             render={(cabin) => <CabinRow cabin={cabin} key={cabin.id} />}
           />
         </Table>
-        <Menus.Menu>
-          
-        </Menus.Menu>
       </Menus>
     </div>
   );
