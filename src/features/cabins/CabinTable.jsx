@@ -19,7 +19,7 @@ function CabinTable() {
 
 
   //FILTER
-  console.log(searchParams);
+  // console.log(searchParams);
   const filterValue = searchParams.get('discount') || "all";
   // console.log(filterValue);
 
