@@ -37,7 +37,6 @@ Wild Oasis is a web application for managing cabin bookings, providing features 
 
 - **User Authentication**: Secure login, signup, and password management with Supabase.
 - **Booking Management**: View, create, and manage bookings with status updates.
-- **Responsive Design**: Styled-components used for cross-device compatibility.
 - **Context & Compound Components**: Used to manage shared state and reusable UI elements.
 - **React Router**: For smooth, dynamic navigation across pages.
 - **Search and Filtering**: Search Params allow precise filtering in the booking dashboard.
