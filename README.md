@@ -25,28 +25,34 @@
 - [📁 Project Structure](#-project-structure)
   - [📂 Project Index](#-project-index)
 - [🚀 Getting Started](#-getting-started)
-  - [☑️ Prerequisites](#-prerequisites)
-  - [⚙️ Installation](#-installation)
-  - [🤖 Usage](#🤖-usage)
-  - [🧪 Testing](#🧪-testing)
-- [📌 Project Roadmap](#-project-roadmap)
 - [🔰 Contributing](#-contributing)
-- [🎗 License](#-license)
-- [🙌 Acknowledgments](#-acknowledgments)
 
 ---
 
 ## 📍 Overview
 
-<code>❯ REPLACE-ME</code>
-
----
+Wild Oasis is a web application for managing cabin bookings, providing features for checking availability, booking management, and user settings. The project leverages modern tools and a modular design for scalability.
 
 ## 👾 Features
 
-<code>❯ REPLACE-ME</code>
+- **User Authentication**: Secure login, signup, and password management with Supabase.
+- **Booking Management**: View, create, and manage bookings with status updates.
+- **Responsive Design**: Styled-components used for cross-device compatibility.
+- **Context & Compound Components**: Used to manage shared state and reusable UI elements.
+- **React Router**: For smooth, dynamic navigation across pages.
+- **Search and Filtering**: Search Params allow precise filtering in the booking dashboard.
 
 ---
+
+## 📌 Challenges
+
+1. **State Management**: Implemented Context API to manage global state effectively across components, ensuring data consistency.
+2. **Real-Time Data Syncing**: Integrated React Query and Supabase for efficient, real-time data updates.
+3. **Modular Design**: Utilized compound components and styled-components to streamline UI while maintaining flexibility.
+4. **Scalability**: Built a maintainable structure for easy scaling and feature addition.
+
+---
+
 
 ## 📁 Project Structure
 
@@ -704,14 +710,7 @@ Run the test suite using the following command:
 ```
 
 
----
-## 📌 Project Roadmap
 
-- [X] **`Task 1`**: <strike>Implement feature one.</strike>
-- [ ] **`Task 2`**: Implement feature two.
-- [ ] **`Task 3`**: Implement feature three.
-
----
 
 ## 🔰 Contributing
 
@@ -756,14 +755,4 @@ Run the test suite using the following command:
 
 ---
 
-## 🎗 License
 
-This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
-
----
-
-## 🙌 Acknowledgments
-
-- List any resources, contributors, inspiration, etc. here.
-
----
