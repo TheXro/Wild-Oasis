@@ -27,7 +27,7 @@ export async function getBookings({ page }) {
 export async function getBooking(id) {
   const { data, error } = await supabase
     .from("bookings")
-    .select("*, cabins(*), guests(*)")
+    .select("*, cabin(*), guest(*)")
     .eq("id", id)
     .single();
 
@@ -35,6 +35,7 @@ export async function getBooking(id) {
     console.error(error);
     throw new Error("Booking not found");
   }
+  console.log(data, error)
 
   return data;
 }
