@@ -23,10 +23,10 @@ function BookingDetail() {
   const { bookingId } = useParams();
   console.log(bookingId);
   const { booking, isLoading } = useBooking(bookingId);
-
+  if (isLoading) return <Spinner />;
+  console.log(booking);
   const { status } = booking;
 
-  if (isLoading) return <Spinner />;
   const moveBack = useMoveBack();
 
   const statusToTagName = {
@@ -39,18 +39,17 @@ function BookingDetail() {
     <>
       <Row type="horizontal">
         <HeadingGroup>
-          <Heading as="h1">Booking #{ bookingId }</Heading>
+          <Heading as="h1">Booking #{bookingId}</Heading>
           <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
         </HeadingGroup>
         <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
       </Row>
 
       <BookingDataBox booking={booking} />
-
       <ButtonGroup>
-       <Button variation="secondary" onClick={moveBack}>
+        <Button variation="secondary" size="large" onClick={moveBack}>
           Back
-        </Button> 
+        </Button>
       </ButtonGroup>
     </>
   );
