@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import UserAvatar from "../features/authentication/UserAvatar";
+import HeaderMenu from "./HeaderMenu";
 
 
 const StyledHeader = styled.header` 
@@ -10,7 +12,10 @@ const StyledHeader = styled.header`
 
 function Header() {
   return (
-    <StyledHeader>Header</StyledHeader>
+    <StyledHeader>
+      <UserAvatar />
+      <HeaderMenu />
+    </StyledHeader>
   )
 }
 
