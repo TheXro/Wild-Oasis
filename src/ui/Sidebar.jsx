@@ -3,7 +3,7 @@ import Logo from "./Logo"
 import MainNav from "./MainNav"
 import Uploader from "../data/Uploader"
 const StyledSidebar = styled.div`
-    background-color:var(--color-grey-00);
+    background-color:var(--color-grey-100);
     border-right: 2px solid var(--color-grey-100);
     padding: 3.2rem 2.4rem;
     flex: 0 1 32rem;
