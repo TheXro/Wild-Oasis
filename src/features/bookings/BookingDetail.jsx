@@ -21,18 +21,21 @@ const HeadingGroup = styled.div`
 
 function BookingDetail() {
   const { bookingId } = useParams();
-  console.log(bookingId);
+  // console.log(bookingId);
   const { booking, isLoading } = useBooking(bookingId);
   if (isLoading) return <Spinner />;
   console.log(booking);
   const { status } = booking;
 
-  const moveBack = useMoveBack();
+  // const moveBack = useMoveBack();
 
   const statusToTagName = {
     unconfirmed: "blue",
     "checked-in": "green",
     "checked-out": "silver",
+  };
+  const handleBackClick = () => {
+    window.history.back();
   };
 
   return (
@@ -42,12 +45,12 @@ function BookingDetail() {
           <Heading as="h1">Booking #{bookingId}</Heading>
           <Tag type={statusToTagName[status]}>{status.replace("-", " ")}</Tag>
         </HeadingGroup>
-        <ButtonText onClick={moveBack}>&larr; Back</ButtonText>
+        {/* <ButtonText onClick={moveBack}>&larr; Back</ButtonText> */}
       </Row>
 
       <BookingDataBox booking={booking} />
       <ButtonGroup>
-        <Button variation="secondary" size="large" onClick={moveBack}>
+        <Button variation="secondary" size="large" onClick={handleBackClick}>
           Back
         </Button>
       </ButtonGroup>
