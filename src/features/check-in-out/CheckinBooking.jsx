@@ -15,6 +15,7 @@ import Checkbox from "../../ui/Checkbox";
 import { formatCurrency } from "../../utils/helpers";
 import { useCheckin } from "./useCheckin.js";
 import { useSettings } from "../settings/useSettings";
+import { useParams } from "react-router-dom";
 
 const Box = styled.div`
   /* Box */
@@ -27,7 +28,9 @@ const Box = styled.div`
 function CheckinBooking() {
   const [confirmPaid, setConfirmPaid] = useState(false);
   const [addBreakfast, setAddBreakfast] = useState(false);
-  const { booking, isLoading } = useBooking();
+  const id = useParams();
+  const { booking, isLoading } = useBooking(id);
+  console.log(booking);
   const { settings, isLoading: isLoadingSettings } = useSettings();
 
   useEffect(() => setConfirmPaid(booking?.isPaid ?? false), [booking]);
@@ -39,15 +42,15 @@ function CheckinBooking() {
 
   const {
     id: bookingId,
-    guests,
+    guest,
     totalPrice,
-    numGuests,
+    numGuest,
     hasBreakfast,
     numNights,
   } = booking;
 
   const optionalBreakfastPrice =
-    settings.breakfastPrice * numNights * numGuests;
+    settings.breakfastPrice * numNights * numGuest;
 
   function handleCheckin() {
     if (!confirmPaid) return;
@@ -97,7 +100,7 @@ function CheckinBooking() {
           disabled={confirmPaid || isCheckingIn}
           id="confirm"
         >
-          I confirm that {guests.fullName} has paid the total amount of{" "}
+          I confirm that {guest.fullName} has paid the total amount of{" "}
           {!addBreakfast
             ? formatCurrency(totalPrice)
             : `${formatCurrency(
