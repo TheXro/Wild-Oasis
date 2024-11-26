@@ -21,8 +21,7 @@ const HeadingGroup = styled.div`
 
 function BookingDetail() {
   const { bookingId } = useParams();
-  // console.log(bookingId);
-  const { booking, isLoading } = useBooking(bookingId);
+  const { booking, isLoading } = useBooking({bookingId});
   if (isLoading) return <Spinner />;
   console.log(booking);
   const { status } = booking;
